@@ -10,4 +10,4 @@ app.use(express.json());
 app.use('/api/v1/graph', Graphrouter);
 app.use('/api/v1/slate', SlateRouter)
 
-app.listen("/" , ()=>{console.log("running on ")});
+app.listen(3000 , ()=>{console.log("running on ")});
