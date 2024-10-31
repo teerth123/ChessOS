@@ -2,9 +2,7 @@ const axios = require("axios");
 
 const games = async (username, month, year) => {
     try {
-        const response = await axios.get(`https://api.chess.com/pub/player/${username}/games/${year}/${month}`, {
-            timeout: 10000
-        });
+        const response = await axios.get(`https://api.chess.com/pub/player/${username}/games/${year}/${month}`, { timeout: 10000 });
         return response.data;
     } catch (error) {
         console.error(error);
@@ -28,7 +26,7 @@ const gamesPerDay = (data) => {
     return gamesCount;
 };
 
-export default async (req, res) => {
+module.exports = async (req, res) => {
     if (req.method === 'POST') {
         const { username } = req.body;
         const today = new Date();
@@ -62,4 +60,3 @@ export default async (req, res) => {
         return res.status(405).end(`Method ${req.method} Not Allowed`);
     }
 };
-    

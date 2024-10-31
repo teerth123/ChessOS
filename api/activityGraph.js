@@ -2,9 +2,7 @@ const axios = require("axios");
 
 const userInfo = async (username) => {
     try {
-        const response = await axios.get(`https://api.chess.com/pub/player/${username}`, {
-            timeout: 10000
-        });
+        const response = await axios.get(`https://api.chess.com/pub/player/${username}`, { timeout: 10000 });
         return response.data;
     } catch (error) {
         console.error(error);
@@ -14,9 +12,7 @@ const userInfo = async (username) => {
 
 const statsData = async (username) => {
     try {
-        const response = await axios.get(`https://api.chess.com/pub/player/${username}/stats`, {
-            timeout: 10000
-        });
+        const response = await axios.get(`https://api.chess.com/pub/player/${username}/stats`, { timeout: 10000 });
         return response.data;
     } catch (error) {
         console.error(error);
@@ -24,7 +20,7 @@ const statsData = async (username) => {
     }
 };
 
-export default async (req, res) => {
+module.exports = async (req, res) => {
     if (req.method === 'POST') {
         const { username } = req.body;
         const info = await userInfo(username);

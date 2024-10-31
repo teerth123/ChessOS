@@ -1,0 +1,15 @@
+{
+    "name": "chess",
+    "version": "1.0.0",
+    "description": "Chess API project",
+    "scripts": {
+      "dev": "nodemon api/activityGraph.js",  
+      "start": "node api/activityGraph.js"   
+    },
+    "dependencies": {
+      "axios": "^1.7.7",
+      "cors": "^2.8.5",
+      "express": "^4.21.1"
+    }
+  }
+  
