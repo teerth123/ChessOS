@@ -6,7 +6,7 @@ const ColoringContributionGraph = ({ username }) => {
 
     useEffect(() => {
         if (username) {
-            axios.post(`http://localhost:3000/api/v1/graph/games`, { username })
+            axios.post(`https://chessmacbackend.onrender.com/api/v1/graph/games`, { username })
                 .then(response => {
                     setGamesperDay(response.data.gamesCountPerDay);
                 })

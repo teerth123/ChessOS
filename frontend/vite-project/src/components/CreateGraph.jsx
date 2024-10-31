@@ -9,7 +9,7 @@ export default function CreateGraph({ username }) {
     useEffect(() => {
         if (username) {
             setLoading(true); // Start loading
-            axios.post("http://localhost:3000/api/v1/games", { username })
+            axios.post("https://chessmacbackend.onrender.com/api/v1/games", { username })
                 .then(response => {
                     setGamesperDay(response.data);
                 })

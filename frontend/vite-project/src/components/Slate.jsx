@@ -9,7 +9,7 @@ export default function Slate({ username }) {
 
     useEffect(() => {
         if (username) {
-            axios.post("http://localhost:3000/api/v1/slate/info", { username })
+            axios.post("https://chessmacbackend.onrender.com/api/v1/slate/info", { username })
                 .then(response => {
                     setData(response.data);
                     setError(null); // Reset error state on successful fetch
