@@ -6,7 +6,7 @@ import magnus from './images/magnus.png'
 // import hand from './images/hand.png'
 import slate from './images/slate.png'
 import Slate from './components/Slate'
-
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   const [input, setInput] = useState(null)
@@ -56,6 +56,7 @@ function App() {
 
   {/* <img src={slate} alt="" className='rounded-2xl float-right mr-0 ml-96' /> */}
 </div>    
+<Analytics />
     </>
   )
 }
