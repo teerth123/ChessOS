@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const ColoringContributionGraph = ({ username }) => {
+const ColoringContributionGraph = ({ username , color, bg}) => {
     const [gamesCountPerDay, setGamesperDay] = useState({});
 
     useEffect(() => {
@@ -78,11 +78,11 @@ const ColoringContributionGraph = ({ username }) => {
         };
 
         const getColor = (count) => {
-            if (count === 0) return 'bg-zinc-500'; 
-            if (count <= 5) return 'bg-custom-green-1';
-            if (count <= 15) return 'bg-custom-green-2';
-            if (count <= 20) return 'bg-custom-green-3';
-            return 'bg-custom-green-4';
+            if (count === 0) return color[4]; 
+            if (count <= 5) return color[3];
+            if (count <= 15) return color[2];
+            if (count <= 20) return color[1];
+            return color[0];
         };
 
         const weeks = getWeekGroups();
@@ -115,24 +115,24 @@ const ColoringContributionGraph = ({ username }) => {
         const { startDate, endDate } = getDateRange();
 
         return (
-            <div className="p-6 bg-[#363433] rounded-lg overflow-auto">
-                <h2 className="text-xl font-bold mb-4 text-white">
+            <div className={`p-3 bg-${bg} rounded-lg overflow-auto border-2 border-[#35332e]`}>
+                {/* <h2 className="text-xl font-bold mb-4 text-white">
                     {username}'s  Heatmap 
                     <span className="text-sm font-normal ml-2 text-gray-500">
                         {startDate.toLocaleDateString()} - {endDate.toLocaleDateString()}
                     </span>
-                </h2>
+                </h2> */}
                 <div className="flex gap-4 overflow-x-auto whitespace-nowrap">
                     {/* Days of week labels */}
-                    <div className="flex flex-col gap-2 pt-8 text-sm text-gray-500">
+                    {/* <div className="flex flex-col gap-2 pt-8 text-sm text-gray-500">
                         {weekDays.map((day, index) => (
                             <div key={day} className="h-8">{index % 2 === 0 ? day : ''}</div>
                         ))}
-                    </div>
+                    </div> */}
                     
                     <div className="flex flex-col">
                         {/* Month labels */}
-                        <div className="flex mb-2 text-sm text-gray-500">
+                        {/* <div className="flex mb-2 text-sm text-gray-500">
                             {monthLabels.map((label, idx) => (
                                 <div
                                     key={idx}
@@ -142,12 +142,12 @@ const ColoringContributionGraph = ({ username }) => {
                                     {label.month}
                                 </div>
                             ))}
-                        </div>
+                        </div> */}
                         
                         {/* Heatmap grid */}
-                        <div className="flex gap-2">
+                        <div className="flex gap-1">
                             {weeks.map((week, weekIndex) => (
-                                <div key={weekIndex} className="flex flex-col gap-2">
+                                <div key={weekIndex} className="flex flex-col gap-1">
                                     {week.map((date, dayIndex) => {
                                         const dateId = date ? formatDateId(date) : null;
                                         const count = dateId && gamesCountPerDay ? (gamesCountPerDay[dateId] || 0) : 0;
@@ -155,7 +155,7 @@ const ColoringContributionGraph = ({ username }) => {
                                             <div
                                                 key={dayIndex}
                                                 id={dateId || `empty-${weekIndex}-${dayIndex}`}
-                                                className={`w-8 h-8 rounded transition-colors ${getColor(count)}`}
+                                                className={`w-4 h-4 rounded transition-colors ${getColor(count)}`}
                                                 title={date ? `${date.toLocaleDateString()}: ${count} contributions` : ''}
                                             />
                                         );
@@ -165,12 +165,13 @@ const ColoringContributionGraph = ({ username }) => {
                         </div>
                     </div>
                 </div>
+                <h1 className='text-left text-sm text-[#4c4c4c] mt-2 mb-0'>6 months Heatmap</h1>
             </div>
         );
     };
 
     return (
-        <ContributionHeatmap gamesCountPerDay={gamesCountPerDay} />
+        <ContributionHeatmap gamesCountPerDay={gamesCountPerDay} color={color}/>
     );
 };
 

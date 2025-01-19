@@ -13,6 +13,12 @@ module.exports = {
         'custom-green-4': '#7ee18a',
         'no-color' : '#64748b'
     },
+    fontFamily: {
+      'roboto': ['Roboto', 'Sans-serif'],
+      'bricolagegrotesque': ['Bricolage Grotesque', 'Sans-serif'],
+      'onest': ['Onest', 'Sans-serif'],
+      'bebasneue': ['Bebas Neue', 'Sans-serif'],
+    },
     },
   },
   plugins: [],
