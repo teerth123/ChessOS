@@ -105,6 +105,7 @@ export default function Safari({ avatar, username, name, followers, country, sta
                         fontColor="#006FEE"
                     />
                 </div>
+                <h1 className='text-left text-sm text-[#4c4c4c] mt-2 mb-0 cursor-pointer' onClick={()=>{window.open("https://arthteerth.vercel.app/", "_blank")}}>arthteerth.vercel.app</h1>
 
             </div>
         </div>
