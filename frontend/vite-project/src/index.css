@@ -2,5 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 body {
-    @apply bg-[#09090a]; /* Change to your desired color */
+    @apply bg-[#f4f4f0]; /* Change to your desired color */
   }

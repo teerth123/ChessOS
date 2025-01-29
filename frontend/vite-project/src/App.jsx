@@ -15,28 +15,39 @@ function App() {
     <>
     <div className='flex'>
         <div className="">
-            <div className='h-[100vh] bg-black w-[20vw]  justify-left'>
-              <Input username={username} setUsername={setUsername} className="mt-2"/>
+            <div className='h-[100vh] bg-[#f4f4f0] w-[20vw]  justify-left border-2 border-gray-300 border-r'>
+              <Input username={username} setUsername={setUsername} className="mt-2 min-w-auto " />
             
-            {username!="Admin" ? 
+              {username!="Admin" ? 
                 (<>
 
                   <Dropdown options={["Wrapped", "Safari"]} head="Theme" setChoice={setTheme} />
                   <Dropdown options={["Roboto", "Bricolage Grotesque", "Onest", "Bebas Neue"]} head="Font Family" setChoice={setFont} />
                   <Dropdown options={["Blue", "Red"]} head="Color Scheme" setChoice={setColor} />
 
-                  Text
                 </>) 
                 :
                 (<>
-
+               
                 </>)
               }
-              </div>
+            </div>
         </div>
-        <Slate username = {username} 
-        theme = {theme} font = {font} color = {color}
-        className='rounded-2xl float-right mr-0 ml-96 mt-0 font-'/>
+
+            {
+              username==="Admin"? 
+              (<>
+                {/* before username is typed */}
+             
+              </>)
+              :
+              (<>
+                <Slate username = {username} 
+                  theme = {theme} font = {font} color = {color}
+                  className='rounded-2xl float-right mr-0 ml-96 mt-0 font-'/>
+              </>)
+            }
+        
         {/* <Analytics /> */}
     </div>
     
