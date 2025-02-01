@@ -38,6 +38,7 @@ function App() {
               username==="Admin"? 
               (<>
                 {/* before username is typed */}
+                <img src="" alt="" />
              
               </>)
               :

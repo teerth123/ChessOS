@@ -115,7 +115,7 @@ const ColoringContributionGraph = ({ username , color, bg}) => {
         const { startDate, endDate } = getDateRange();
 
         return (
-            <div className={`p-3 bg-${bg} rounded-lg overflow-auto border-2 border-[#35332e]`}>
+            <div className={`p-3 bg-${bg} rounded-lg overflow-auto border-2 border-[#35332e] text-center flex justify-center`}>
                 {/* <h2 className="text-xl font-bold mb-4 text-white">
                     {username}'s  Heatmap 
                     <span className="text-sm font-normal ml-2 text-gray-500">
@@ -165,7 +165,7 @@ const ColoringContributionGraph = ({ username , color, bg}) => {
                         </div>
                     </div>
                 </div>
-                <h1 className='text-left text-sm text-[#4c4c4c] mt-2 mb-0'>6 months Heatmap</h1>
+                
             </div>
         );
     };
