@@ -99,7 +99,7 @@ const storeUserInfo = async (req, res) => {
         res.json({
             message: "User data fetched and stored successfully",
             userInfo: info,
-            chessStats,
+            stats,
         });
 
     } catch (error) {
