@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model UsersTable {
+  id Int @id @default(autoincrement())
+  username String @unique
+  name String
+  url String
+  country String
+  lastvisit DateTime
+  noofdownloads Int @default(0)
+  feedbacks feedbackTable[]
+}
+
+model feedbackTable {
+  id Int @id @default(autoincrement())
+  username Int
+  fullname String
+  chess_username UsersTable @relation(fields: [username], references: [id])
+  feedbackQues feedbackQueTable[]
+}
+
+model feedbackQueTable {
+  id Int @id @default(autoincrement())
+  feedbackId Int
+  que String
+  outof Int
+  scored Int ?
+  feedback String?
+  feedback_Id feedbackTable @relation(fields: [feedbackId], references: [id])
+}

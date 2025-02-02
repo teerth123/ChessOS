@@ -1,7 +1,7 @@
 const express = require("express");
 // const nodemon = require("nodemon")
 const cors = require("cors")
-const Graphrouter = require('./routes/activityGraph');
+const Graphrouter = require('./routes/activityGraph')
 const SlateRouter = require('./routes/slate')
 const app = express();
 app.use(cors());
