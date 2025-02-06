@@ -3,8 +3,6 @@ import axios from 'axios';
 import Wrapped from './Wrapped';
 import Safari from './Safari';
 
-// import SkeletonWrapped from './SkeletonWrapped'; // Ensure this component is imported correctly
-
 export default function Slate({ username, theme, font, color }) {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
@@ -23,16 +21,14 @@ export default function Slate({ username, theme, font, color }) {
                         setData(null);
                         setError("Failed to load data. Please try again later.");
                     });
-            }, 2000); // Delay for 2 seconds
+            }, 2000); 
         }
     }, [username]);
 
     if (error) {
         return <div className="text-red-500">{error}</div>;
     }
-
     if (!data) {
-        // Ensure the skeleton screen is visible by using contrasting colors
         return (
             <div className="flex justify-center items-center w-full bg-gray-100">
                 <SkeletonWrapped />
@@ -40,6 +36,7 @@ export default function Slate({ username, theme, font, color }) {
         );
     }
 
+    
     const { userInfo, stats } = data;
 
     const {
@@ -68,6 +65,7 @@ export default function Slate({ username, theme, font, color }) {
     }
 
     const ratings = [];
+    
     if (stats) {
         for (let gameType in stats) {
             const bestRating = stats[gameType].best ? stats[gameType].best.rating : null;
@@ -76,6 +74,8 @@ export default function Slate({ username, theme, font, color }) {
             }
         }
     }
+    console.log(ratings) 
+
 
     // Sort the ratings from highest to lowest
     ratings.sort((a, b) => b.rating - a.rating);
@@ -86,6 +86,7 @@ export default function Slate({ username, theme, font, color }) {
     console.log(sortedRatings);
     return (
         <>
+            
             <div className='flex justify-center items-center w-full'>
                 {theme === "Wrapped" && data && (
                     <Wrapped
